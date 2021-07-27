@@ -10,6 +10,9 @@
 TForm1 *Form1;
         int x = -8;
         int y = -8;
+        bool gameHasStarted = false;
+        int paddle1_points = 0;
+        int paddle2_points = 0;
 
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -36,6 +39,9 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
         {
                 timerBall->Enabled = false;
                 ball->Visible = false;
+                gameHasStarted = false;
+                startGame->Visible = true;
+                paddle2_points++;
         }
   //odbicie pilki z lewej strony
         if (ball->Top - ball->Height / 2 >= paddle1->Top &&
@@ -55,6 +61,9 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
         {
                 timerBall->Enabled = false;
                 ball->Visible = false;
+                gameHasStarted = false;
+                startGame->Visible = true;
+                paddle1_points++;
         }
   //odbicie pilki z prawej strony
         if (ball->Top >= paddle2->Top  - ball->Height / 2 &&
@@ -113,3 +122,26 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
         if (Key == 0x5A) timer_paddle1_down->Enabled = false;
  }
 //---------------------------------------------------------------------------
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+        timerBall->Enabled = false;        
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::startGameClick(TObject *Sender)
+{
+        if (gameHasStarted == false)
+        {
+        // ustawiam pilke na srodku planszy
+                ball->Left = background->Left + background->Width/2;
+                ball->Top = background->Top + background->Height/2;
+        // wlaczam gre
+                gameHasStarted = true;
+                timerBall->Enabled = true;
+                ball->Visible = true;
+        //wylaczam zbedne funkcje
+                startGame->Visible = false;
+        }
+}
+//---------------------------------------------------------------------------
+
