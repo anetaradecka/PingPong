@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 345
-  Top = 192
+  Left = 275
+  Top = 117
   Width = 1044
   Height = 540
   Caption = 'PingPong'
-  Color = clBtnFace
+  Color = clCream
   UseDockManager = True
   DockSite = True
   Font.Charset = DEFAULT_CHARSET
@@ -13,6 +13,7 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
   PixelsPerInch = 96
@@ -23,7 +24,7 @@ object Form1: TForm1
     Width = 1028
     Height = 501
     Align = alClient
-    Brush.Color = clBtnFace
+    Brush.Color = clAppWorkSpace
   end
   object ball: TImage
     Left = 472
@@ -1008,6 +1009,21 @@ object Form1: TForm1
       8886BABBBA00D9DAD99B9D9C434B46182A1F172A1E172A1E172A1E172A1E172A
       1E172A1E172A1E172A1E172A1E172A1E172A1E172A1E172A1E172A1E172A1E17
       2A1E172A1E182A1F434B469B9D9CD9DAD900}
+  end
+  object startGame: TButton
+    Left = 352
+    Top = 352
+    Width = 283
+    Height = 57
+    Caption = 'Start new game'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Calibri'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = startGameClick
   end
   object timerBall: TTimer
     Interval = 20

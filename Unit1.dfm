@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 275
-  Top = 117
-  Width = 1044
+  Left = 295
+  Top = 106
+  Width = 1033
   Height = 540
   Caption = 'PingPong'
   Color = clCream
@@ -21,7 +21,7 @@ object Form1: TForm1
   object background: TShape
     Left = 0
     Top = 0
-    Width = 1028
+    Width = 1017
     Height = 501
     Align = alClient
     Brush.Color = clAppWorkSpace
@@ -1010,6 +1010,55 @@ object Form1: TForm1
       1E172A1E172A1E172A1E172A1E172A1E172A1E172A1E172A1E172A1E172A1E17
       2A1E172A1E182A1F434B469B9D9CD9DAD900}
   end
+  object score: TLabel
+    Left = 376
+    Top = 120
+    Width = 240
+    Height = 41
+    Alignment = taCenter
+    AutoSize = False
+    Color = clBtnFace
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Calibri'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Visible = False
+  end
+  object balls: TLabel
+    Left = 376
+    Top = 72
+    Width = 241
+    Height = 41
+    AutoSize = False
+    Color = clBtnFace
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Calibri'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Visible = False
+  end
+  object pointFor: TLabel
+    Left = 344
+    Top = 24
+    Width = 297
+    Height = 41
+    AutoSize = False
+    Color = clBtnFace
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Calibri'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Visible = False
+  end
   object startGame: TButton
     Left = 352
     Top = 352
@@ -1024,6 +1073,22 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
     OnClick = startGameClick
+  end
+  object nextRound: TButton
+    Left = 352
+    Top = 280
+    Width = 281
+    Height = 57
+    Caption = 'Next round'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Calibri'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    Visible = False
+    OnClick = nextRoundClick
   end
   object timerBall: TTimer
     Interval = 20
