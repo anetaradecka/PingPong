@@ -30,21 +30,28 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
         if(ball->Top + ball->Height - 5 >= background->Height) y = -y;
 
   //skucha z lewej strony
-        if (ball->Left == 0)
+        if (((ball->Top < paddle1->Top - ball->Height/2) ||
+           (ball->Top + ball->Height > paddle1->Top + paddle1->Height + ball->Height/2)) &&
+            ball->Left <= paddle1->Left + paddle1->Width)
         {
                 timerBall->Enabled = false;
                 ball->Visible = false;
         }
-
+  //odbicie pilki z lewej strony
         if (ball->Top - ball->Height / 2 >= paddle1->Top &&
-        ball->Top - ball->Height <= paddle1->Top + paddle1->Height &&
-        ball->Left <= paddle1->Left + paddle1->Width)
+            ball->Top - ball->Height <= paddle1->Top + paddle1->Height &&
+            ball->Left <= paddle1->Left + paddle1->Width)
+         /*(ball->Top >= paddle1->Top - ball->Height/2 &&
+            ball->Top + ball->Height <= paddle1->Top + paddle1->Height + ball->Height/2 &&
+            ball->Left == paddle1->Left + paddle1->Width)*/
         {
                 if (x < 0) x = -x;
         }
 
   //skucha z prawej strony (prawy bok pilki == prawy bok okna)
-        if (ball->Left + ball->Width == background->Left + background->Width)
+        if (((ball->Top < paddle2->Top - ball->Height/2) ||
+           (ball->Top + ball->Height > paddle2->Top + paddle2->Height + ball->Height/2)) &&
+            ball->Left + ball->Width >= paddle2->Left)
         {
                 timerBall->Enabled = false;
                 ball->Visible = false;
