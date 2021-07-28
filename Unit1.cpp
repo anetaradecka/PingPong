@@ -18,6 +18,14 @@ TForm1 *Form1;
         int balls = 0;
         int rounds = 0;
 
+        void showScore()
+        {
+                Form1->score->Visible = true;
+                AnsiString paddle1 = IntToStr(paddle1_points);
+                AnsiString paddle2 = IntToStr(paddle2_points);
+                Form1->score->Caption = "score: " + paddle1 + " : " + paddle2;
+        }
+
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
@@ -47,15 +55,16 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
                 startGame->Visible = true;
                 nextRound->Visible = true;
                 paddle2_points++;
-                score->Visible = true;
-                AnsiString paddle1 = IntToStr(paddle1_points);
-                AnsiString paddle2 = IntToStr(paddle2_points);
-                score->Caption = "score: " + paddle1 + " : " + paddle2;
-                balls->Visible = true;
-                AnsiString ballsNo = IntToStr(balls);
-                balls->Caption = "balls bounced back: " + ballsNo;
-                pointFor->Visible = true;
-                pointFor->Caption = "Point for the right player";
+                showScore();
+                //score->Visible = true;
+                //AnsiString paddle1 = IntToStr(paddle1_points);
+                //AnsiString paddle2 = IntToStr(paddle2_points);
+                //score->Caption = "score: " + paddle1 + " : " + paddle2;
+                //balls->Visible = true;
+                //AnsiString ballsNo = IntToStr(balls);
+                //balls->Caption = "balls bounced back: " + ballsNo;
+                //pointFor->Visible = true;
+                //pointFor->Caption = "Point for the right player";
         }
   //odbicie pilki z lewej strony
         if (ball->Top - ball->Height / 2 >= paddle1->Top &&
@@ -69,6 +78,8 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
                 {
                 x = -x;
                 balls++;
+                if (timerBall->Interval > 1)
+                timerBall->Interval -= 1;
                 }
         }
 
@@ -83,15 +94,16 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
                 startGame->Visible = true;
                 nextRound->Visible = true;
                 paddle1_points++;
-                score->Visible = true;
-                AnsiString paddle1 = IntToStr(paddle1_points);
-                AnsiString paddle2 = IntToStr(paddle2_points);
-                score->Caption = "score: " + paddle1 + " : " + paddle2;
+                showScore();
+                //score->Visible = true;
+                //AnsiString paddle1 = IntToStr(paddle1_points);
+                //AnsiString paddle2 = IntToStr(paddle2_points);
+                //score->Caption = "score: " + paddle1 + " : " + paddle2;
                 //balls->Visible = true;
                 //AnsiString ballsNo = IntToStr(balls);
                 //balls->Caption = "balls bounced back: " + ballsNo;
-                pointFor->Visible = true;
-                pointFor->Caption = "Point for the right player";
+                //pointFor->Visible = true;
+                //pointFor->Caption = "Point for the right player";
         }
   //odbicie pilki z prawej strony
         if (ball->Top >= paddle2->Top  - ball->Height / 2 &&
@@ -101,6 +113,8 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
                 {
                 x = -x;
                 balls++;
+                if (timerBall->Interval > 1)
+                timerBall->Interval -= 1;
                 }
         }
 
